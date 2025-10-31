@@ -3,7 +3,9 @@
 2. How will your tech solve: Wizard Watch uses a combination of real-time GPS data and verified records from the Ministry of Magic to notify users when a dark wizard is in their area. The app functions similarly to Muggle tools that track local offenders — except it’s powered by advanced magical algorithms and enchanted GPS spells. Some of our key features are Dark Wizard Tracker, an Interactive map that shows last-known locations, and An Alert System that sends push notifications when a dark wizard is nearby. Another feature is Wizard Profiles that list offenses, known spells, and danger ratings. Lastly, Ministry Integration which updates daily with verified data from official sources.
 3. How will it make money: Wizard Watch will generate revenue through a combination of subscription services and data licensing. The app will offer a free version that provides users with basic access to dark wizard alerts and location data, while a premium subscription will unlock detailed profiles, crime histories, and exclusive reports from the Ministry of Magic. In addition, Wizard Watch will earn money by selling aggregated user information to partnered companies and research organizations interested in studying dark wizard activity patterns. The app may also include sponsored ads and partnerships with magical businesses, such as wand makers or spell shops, to create additional income streams while maintaining a safe and informative user experience.
 
+Made by:
 Dillon Mensah,
 Aisha Aloma,
-Hamilton Hamm
-Egwuatu Oneal
+Hamilton Hamm,
+Egwuatu Oneal,
+and Zackary Sturtevant.
