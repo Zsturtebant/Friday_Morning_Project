@@ -1,11 +1,119 @@
-# Friday_Morning_Project
-1. Problem Statement: Have you ever wondered who’s lurking in the shadows of the wizarding world? Think about the most dangerous person you know — a dark wizard is even worse! In the world of magic, dark wizards pose a serious threat to communities everywhere. Unfortunately, most witches and wizards don’t have easy access to information about who these dangerous individuals are or where they may be hiding. Wizard Watch was created to solve that problem by keeping magical citizens informed and alert about dark wizard activity nearby.
-2. How will your tech solve: Wizard Watch uses a combination of real-time GPS data and verified records from the Ministry of Magic to notify users when a dark wizard is in their area. The app functions similarly to Muggle tools that track local offenders — except it’s powered by advanced magical algorithms and enchanted GPS spells. Some of our key features are Dark Wizard Tracker, an Interactive map that shows last-known locations, and An Alert System that sends push notifications when a dark wizard is nearby. Another feature is Wizard Profiles that list offenses, known spells, and danger ratings. Lastly, Ministry Integration which updates daily with verified data from official sources.
-3. How will it make money: Wizard Watch will generate revenue through a combination of subscription services and data licensing. The app will offer a free version that provides users with basic access to dark wizard alerts and location data, while a premium subscription will unlock detailed profiles, crime histories, and exclusive reports from the Ministry of Magic. In addition, Wizard Watch will earn money by selling aggregated user information to partnered companies and research organizations interested in studying dark wizard activity patterns. The app may also include sponsored ads and partnerships with magical businesses, such as wand makers or spell shops, to create additional income streams while maintaining a safe and informative user experience.
+Wizard Watch
+What It Does
 
-Made by:
-Dillon Mensah,
-Aisha Aloma,
-Hamilton Hamm,
-Egwuatu Oneal,
-and Zackary Sturtevant.
+Wizard Watch is an enchanted app designed to keep magical citizens safe and informed about dark wizard activity nearby. Using real-time GPS data and verified records from the Ministry of Magic, the app notifies users whenever a dark wizard is detected in their area. It functions much like a Muggle offender tracker but with advanced magical algorithms and enchanted GPS spells.
+
+Key features include:
+
+Dark Wizard Tracker: Monitors the last-known locations of dangerous wizards.
+
+Interactive Map: Displays nearby dark wizard sightings.
+
+Alert System: Sends notifications when a dark wizard is close.
+
+Wizard Profiles: Lists offenses, known spells, and danger ratings.
+
+Ministry Integration: Updates daily from verified Ministry data.
+
+Team Members
+
+Dillon Mensah – Developer / Backend Logic – GitHub: @dillonmensah
+
+Aisha Aloma – Designer / UI-UX – GitHub: @aishaaloma
+
+Hamilton Hamm – Data Engineer / Integration Lead – GitHub: @hamiltonhamm
+
+Egwuatu Oneal – Data Analyst / Algorithm Specialist – GitHub: @onealegwuatu
+
+Zackary Sturtevant – Project Manager / Frontend Developer – GitHub: @zacksturtevant
+
+Setup Instructions
+
+How to run Wizard Watch locally:
+
+Clone the repository:
+
+git clone https://github.com/<your-repo-link>.git
+
+
+Navigate to the project directory:
+
+cd wizard-watch
+
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+
+Launch the app:
+
+python app.py
+
+
+Open your browser and go to http://localhost:5000
+
+Technologies Used
+
+Language: Python
+
+Frameworks: Flask (for web), Leaflet.js (for interactive maps)
+
+Libraries: Pandas, Requests, Geopy
+
+Tools: GitHub, Google Maps API, Figma
+
+Project Structure
+wizard-watch/
+│
+├── app.py               # Main application logic
+├── static/              # CSS, JavaScript, and image assets
+├── templates/           # HTML templates for UI
+├── data/                # Verified dark wizard datasets
+├── models/              # Backend models and tracking algorithms
+├── requirements.txt     # Dependencies
+└── README.md            # Project overview
+
+How to Contribute
+
+Fork the repository.
+
+Create a new branch (git checkout -b feature-name).
+
+Commit your changes (git commit -m "Add new feature").
+
+Push to your branch (git push origin feature-name).
+
+Open a Pull Request for review.
+
+Current Status
+
+✅ Core features implemented: GPS tracking, alert system, basic profiles
+
+⚙️ In progress: Ministry API integration, user authentication, premium dashboard
+
+🚀 Upcoming: Subscription model, sponsored magical business partnerships
+
+Problem Statement
+
+Have you ever wondered who’s lurking in the shadows of the wizarding world? Dark wizards pose a serious threat to magical communities, yet few tools exist to identify or track them. Wizard Watch solves this by making information about dark wizard activity accessible and actionable for every witch and wizard.
+
+How It Makes Money
+
+Wizard Watch operates under a freemium model:
+
+Free tier: Basic alerts and location data.
+
+Premium subscription: Detailed wizard profiles, crime histories, and exclusive Ministry reports.
+
+Additional revenue streams:
+
+Aggregated data licensing for research and security analysis
+
+Sponsored ads and partnerships with magical businesses (wand makers, spell shops)
+
+License
+
+Choose a license at choosealicense.com
+
+Would you like me to turn this into a ready-to-upload README.md file for GitHub (formatted with markdown styling and spacing)?
