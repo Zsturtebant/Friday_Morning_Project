@@ -1,4 +1,4 @@
 Sign up!
-Zackary Sturtevant 1
+Zackary Sturtevant
 Oneal Egwuatu
 Aisha Aloma
