@@ -124,13 +124,13 @@ We are going to use a java class to pull the location of registered sex offender
 
 Work Tasks
 
-Take the user location and store it - wizard_tracker.java -oneal
+Take the user location and store it - wizard_tracker.java - Oneal
 
-Pull loaction of registered sex offenders - web.java Dillon Mensah
+Pull loaction of registered sex offenders - web.java - Dillon Mensah
 
-Sort the list of the sex offenders based off distance from user - main.java
+Sort the list of the sex offenders based off distance from user - main.java - Zackary Sturtevant
 
-Display the list up to a certain distance based off user input - main.java Aisha Aloma
+Display the list up to a certain distance based off user input - main.java - Aisha Aloma
 
-Make a UI to read user inputs - main.java Hamilton Hamm
+Make a UI to read user inputs - main.java - Hamilton Hamm
 
