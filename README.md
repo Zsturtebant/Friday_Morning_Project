@@ -126,7 +126,7 @@ Work Tasks
 
 Take the user location and store it - wizard_tracker.java - Oneal
 
-Pull loaction of registered sex offenders - web.java - Dillon Mensah
+Pull location of registered sex offenders - web.java - Dillon Mensah
 
 Sort the list of the sex offenders based off distance from user - main.java - Zackary Sturtevant
 
