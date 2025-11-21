@@ -124,7 +124,7 @@ We are going to use a java class to pull the location of registered sex offender
 
 Work Tasks
 
-Take the user location and store it - wizard_tracker.java
+Take the user location and store it - wizard_tracker.java -oneal
 
 Pull loaction of registered sex offenders - web.java
 
