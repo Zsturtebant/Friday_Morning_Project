@@ -28,7 +28,7 @@ public class Web  {
     // -----------------------------
     // Fields
     // -----------------------------
-    private final HttpClient client = HttpClient.newHttpClient();
+    private static final HttpClient client = HttpClient.newHttpClient();
     private final Gson gson = new Gson();
 
     // -----------------------------
