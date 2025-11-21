@@ -7,7 +7,7 @@ import java.net.http.HttpResponse;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
-import java.until.scanner
+import java.util.Scanner;
 
 public class Web  { // Main Class
 
@@ -30,8 +30,7 @@ public class Web  { // Main Class
     // -----------------------------
     // Fields
     // -----------------------------
-    private static final HttpClient client = HttpClient.newHttpClient();
-            .build();
+    private static final HttpClient client = HttpClient.newBuilder().build();
     private final Gson gson = new Gson();
 
     // -----------------------------
@@ -41,22 +40,20 @@ public class Web  { // Main Class
             throws IOException, InterruptedException {
 
         if (firstName == null || firstName.isEmpty()) {
-            System.out.println("Zipcode is not valid.");
+            System.out.println("First name is missing.");
             return null;
         }
 
         if (zipcode == null || zipcode.length() != 5) {
-            System.out.println("Zipcode is not vaild.");
+            System.out.println("Zipcode is not valid.");
             return null;
         }
 
         // Build the URL by adding the name, zip code, and API Key        
-       String url = "https://api.offenders.io/sexoffender?firstName=%s&zipcode=%s&key=%s"
-        + "?firstName=" + firstName
-        + "&zipcode=" + zipcode
-        + "key=" + apikey;
-
-        );
+       String url = "https://api.offenders.io/sexoffender"
+            + "?firstName=" + firstName
+            + "&zipcode=" + zipcode
+            + "&key=" + apiKey;
 
         // Create the HTTP GET request
         HttpRequest request = HttpRequest.newBuilder()
@@ -80,7 +77,7 @@ public class Web  { // Main Class
     // Main Method (Safe Output)
     // -----------------------------
     public static void main(String[] args) {
-        web client = new Web();
+        Web client = new Web();
 
         try {
             // Example search — replace API key
