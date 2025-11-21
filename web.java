@@ -29,6 +29,7 @@ public class Web  {
     // Fields
     // -----------------------------
     private static final HttpClient client = HttpClient.newHttpClient();
+            .build();
     private final Gson gson = new Gson();
 
     // -----------------------------
@@ -37,9 +38,21 @@ public class Web  {
     public OffenderResponse search(String firstName, String zipcode, String apiKey)
             throws IOException, InterruptedException {
 
-        String url = String.format(
-                "https://api.offenders.io/sexoffender?firstName=%s&zipcode=%s&key=%s",
-                firstName, zipcode, apiKey
+        if (firstName == null || firstName.isEmpty()) {
+            System.out.println("Zipcode is not valid.");
+            return null;
+        }
+
+        if (zipcode == null || zipcode.length() != 5) {
+            System.out.println("Zipcode is not vaild.");
+            return null;
+        }
+                
+       String url = "https://api.offenders.io/sexoffender"
+        + "?firstName=" + firstName
+        + "&zipcode=" + zipcode
+        + "key=" + apikey;
+
         );
 
         HttpRequest request = HttpRequest.newBuilder()
@@ -51,6 +64,11 @@ public class Web  {
         HttpResponse<String> response =
                 client.send(request, HttpResponse.BodyHandlers.ofString());
 
+        if (response.statusCode() != 200) {
+            System.out.println("Error: " + response.statusCode());
+            return null;
+        }
+
         return gson.fromJson(response.body(), OffenderResponse.class);
     }
 
@@ -58,7 +76,7 @@ public class Web  {
     // Main Method (Safe Output)
     // -----------------------------
     public static void main(String[] args) {
-        web client = new web();
+        web client = new Web();
 
         try {
             // Example search — replace API key
