@@ -3,9 +3,13 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-public class web{
-	{
- 
+
+public class web {
+
+    private HttpClient client;
+
+    // Constructor
+    public web() {
         this.client = HttpClient.newBuilder()
                 .followRedirects(HttpClient.Redirect.NORMAL)
                 .build();
@@ -21,7 +25,7 @@ public class web{
     public String fetchSearchPage() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://www.nsopw.gov/search-public-sex-offender-registries"))
-                .header("User-Agent", "JavaHttpClient/1.0") // polite UA
+                .header("User-Agent", "JavaHttpClient/1.0")
                 .GET()
                 .build();
 
@@ -32,7 +36,7 @@ public class web{
     }
 
     public static void main(String[] args) {
-        NSOPWClient client = new NSOPWClient();
+        web client = new web();
         try {
             String html = client.fetchSearchPage();
             System.out.println(html);
