@@ -132,5 +132,5 @@ Sort the list of the sex offenders based off distance from user - main.java
 
 Display the list up to a certain distance based off user input - main.java Aisha Aloma
 
-Make a UI to read user inputs - main.java
+Make a UI to read user inputs - main.java Hamilton Hamm
 
