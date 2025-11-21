@@ -96,20 +96,60 @@ public class Web  { // Main Class
      // -----------------------------
     //  Fake API Simulation
     // -----------------------------
+    Public OffenderResponse fakeSearch() {
 
+        // Generate 1-5 random offenders
+        int count = random.nextInt(5) +1;
+
+        Offender[] fakeList = new Offender[count];
+
+        for (int i = 0; i < count; i++) {
+            fakeList[i] = getRandomOffender(i + 1);
+        }
+
+        OffenderResponse response = new OffenderResponse();
+        response.offenders = fakeList;
+        return response;
+    }
         
-    
+
     // -----------------------------
     // Main Method (Safe Output)
     // -----------------------------
     public static void main(String[] args) {
-        Web client = new Web();
+        Web app = new Web();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose an option:");
+        System.out.println("1. Use Real API");
+        System.out.println("2. Use Fake API");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine(); // Clear newline
+
+        offenderRespone result = null;
+        
 
         try {
-            // Example search — replace API key
-            OffenderResponse result =
-                    client.search("First", "12345", "YOUR_API_KEY_HERE");
 
+            if (choice == 1) {
+                system.out.print("Enter first name: ");
+                String firstName = scanner.nextLine();
+
+                system.out.print("Enter Zipcode: ");
+                String zipcode = scanner.nextLine();
+
+                system.out.print("Enter API key: ");
+                String apiKey = scanner.nextLine();
+
+                result = app.search(firstName, zipcode, apiKey);
+
+            } else {
+                System.out.println("Using Random Fake API");
+                result = app.fakesearch();
+            }
+            
+            // Print results
             if (result != null && result.offenders != null) {
                 System.out.println("Offenders found: " + result.offenders.length);
 
