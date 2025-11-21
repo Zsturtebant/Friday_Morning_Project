@@ -74,6 +74,32 @@ public class Web  { // Main Class
     }
 
     // -----------------------------
+    // Generate One Random Fake Offender
+    // -----------------------------
+    public OffenderResponse getRandomOffender(int id) {
+
+        String[] firstNames = {"John", "Mark", "Chris", "Alex", "Ryan", "James", "David"};
+        String[] lastNames = {"Smith", "Johnson", "Brown", "Davis", "Moore", "Taylor"};
+
+        Offender o = new Offender();
+
+        o.firstName = firstNames[random.nextInt(firstNames.length)];
+        o.lastName = lastNames[random.nextInt(lastNames.length)];
+        o.name = o.firstName + " " + o.lastName;
+
+        //Random Fake Profile Link
+        o.profileUrl = "https://example.com/profile" + id;
+
+        return o;
+    }
+
+     // -----------------------------
+    //  Fake API Simulation
+    // -----------------------------
+
+        
+    
+    // -----------------------------
     // Main Method (Safe Output)
     // -----------------------------
     public static void main(String[] args) {
