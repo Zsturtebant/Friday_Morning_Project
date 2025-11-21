@@ -117,12 +117,12 @@ License
 Choose a license at choosealicense.com
 
 Would you like me to turn this into a ready-to-upload README.md file for GitHub (formatted with markdown styling and spacing)?
-What were actually gonna do in this project?
+What is actually gonna do in this project?
 We are going to use a java class to pull the location of registered sex offenders and display a list within a certain radius of the user. 
 Work Tasks
 Take the user location and store it - wizard_tracker.java
 Pull loaction of registered sex offenders - web.java
 Sort the list of the sex offenders based off distance from user - main.java
-Display the list up to a certain distance based off user input - main.java
+Display the list up to a certain distance based off user input - main.java Aisha Aloma
 Make a UI to read user inputs - main.java
 
