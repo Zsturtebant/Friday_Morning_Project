@@ -117,7 +117,7 @@ License
 Choose a license at choosealicense.com
 
 Would you like me to turn this into a ready-to-upload README.md file for GitHub (formatted with markdown styling and spacing)?
-What is actually gonna do in this project?
+What is actually gonna be done in this project?
 We are going to use a java class to pull the location of registered sex offenders and display a list within a certain radius of the user. 
 Work Tasks
 Take the user location and store it - wizard_tracker.java
