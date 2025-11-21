@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Web  { // Main Class
 
@@ -76,7 +77,9 @@ public class Web  { // Main Class
     // -----------------------------
     // Generate One Random Fake Offender
     // -----------------------------
-    public Offender getRandomOffender(int id)
+    public Offender getRandomOffender(int id) {
+
+        Random random = new Random();
 
         String[] firstNames = {"John", "Mark", "Chris", "Alex", "Ryan", "James", "David"};
         String[] lastNames = {"Smith", "Johnson", "Brown", "Davis", "Moore", "Taylor"};
@@ -99,7 +102,8 @@ public class Web  { // Main Class
     public OffenderResponse fakeSearch() {
 
         // Generate 1-5 random offenders
-        int count = Random random = new Random();
+        Random random = new Random();
+        int count = random.nextInt(5) + 1;
 
         Offender[] fakeList = new Offender[count];
 
@@ -136,10 +140,10 @@ public class Web  { // Main Class
                 System.out.print("Enter first name: ");
                 String firstName = scanner.nextLine();
 
-                system.out.print("Enter Zipcode: ");
+                System.out.print("Enter Zipcode: ");
                 String zipcode = scanner.nextLine();
 
-                system.out.print("Enter API key: ");
+                System.out.print("Enter API key: ");
                 String apiKey = scanner.nextLine();
 
                 result = app.search(firstName, zipcode, apiKey);
