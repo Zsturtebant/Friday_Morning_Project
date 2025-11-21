@@ -7,7 +7,7 @@ import java.net.http.HttpResponse;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
-public class web  {
+public class Web  {
 
     // -----------------------------
     // Embedded JSON data structures
