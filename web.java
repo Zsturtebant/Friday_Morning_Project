@@ -1,55 +1,41 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 public class web{
  
+        this.client = HttpClient.newBuilder()
+                .followRedirects(HttpClient.Redirect.NORMAL)
+                .build();
+    }
 
     /**
-     * Sends an HTTP GET request to the given URL and returns the response body as a string.
+     * Fetches the raw HTML from the NSOPW search page.
      *
-     * @param urlString the URL to fetch
-     * @return the response body
-     * @throws IOException if the request fails
+     * @return HTML content of the page
+     * @throws IOException
+     * @throws InterruptedException
      */
-    public String get(String urlString) throws IOException {
-        URL url = new URL("https://www.nsopw.gov/search-public-sex-offender-registries");
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    public String fetchSearchPage() throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://www.nsopw.gov/search-public-sex-offender-registries"))
+                .header("User-Agent", "JavaHttpClient/1.0") // polite UA
+                .GET()
+                .build();
 
-        // Configure the request
-        connection.setRequestMethod("GET");
-        connection.setConnectTimeout(5000);
-        connection.setReadTimeout(5000);
+        HttpResponse<String> response =
+                client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        int status = connection.getResponseCode();
-        BufferedReader reader;
-
-        // Choose input stream depending on response code
-        if (status >= 200 && status < 300) {
-            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        } else {
-            reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-        }
-
-        // Read response
-        StringBuilder response = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            response.append(line).append("\n");
-        }
-
-        reader.close();
-        connection.disconnect();
-        return response.toString();
+        return response.body();
     }
 
     public static void main(String[] args) {
-        WebClient client = new WebClient();
+        NSOPWClient client = new NSOPWClient();
         try {
-            String data = client.get("https://api.github.com");
-            System.out.println(data);
-        } catch (IOException e) {
+            String html = client.fetchSearchPage();
+            System.out.println(html);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
