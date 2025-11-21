@@ -7,13 +7,13 @@ import java.net.http.HttpResponse;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
-public class Web  {
+public class Web  { // Main Class
 
     // -----------------------------
     // Embedded JSON data structures
     // -----------------------------
     static class OffenderResponse {
-        Offender[] offenders;
+        Offender[] offenders; // List/array of offenders
     }
 
     static class Offender {
@@ -47,7 +47,8 @@ public class Web  {
             System.out.println("Zipcode is not vaild.");
             return null;
         }
-                
+
+        // Build the URL by adding the name, zip code, and API Key        
        String url = "https://api.offenders.io/sexoffender"
         + "?firstName=" + firstName
         + "&zipcode=" + zipcode
@@ -55,6 +56,7 @@ public class Web  {
 
         );
 
+        // Create the HTTP GET request
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .header("Accept", "application/json")
@@ -97,6 +99,7 @@ public class Web  {
             }
 
         } catch (Exception e) {
+            // If something goes wrong, print the error
             e.printStackTrace();
         }
     }
