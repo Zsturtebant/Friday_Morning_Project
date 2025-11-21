@@ -7,6 +7,8 @@ import java.net.http.HttpResponse;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
+import java.until.scanner
+
 public class Web  { // Main Class
 
     // -----------------------------
@@ -49,7 +51,7 @@ public class Web  { // Main Class
         }
 
         // Build the URL by adding the name, zip code, and API Key        
-       String url = "https://api.offenders.io/sexoffender"
+       String url = "https://api.offenders.io/sexoffender?firstName=%s&zipcode=%s&key=%s"
         + "?firstName=" + firstName
         + "&zipcode=" + zipcode
         + "key=" + apikey;
