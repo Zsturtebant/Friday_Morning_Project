@@ -76,7 +76,7 @@ public class Web  { // Main Class
     // -----------------------------
     // Generate One Random Fake Offender
     // -----------------------------
-    public OffenderResponse getRandomOffender(int id) {
+    public Offender getRandomOffender(int id)
 
         String[] firstNames = {"John", "Mark", "Chris", "Alex", "Ryan", "James", "David"};
         String[] lastNames = {"Smith", "Johnson", "Brown", "Davis", "Moore", "Taylor"};
@@ -96,10 +96,10 @@ public class Web  { // Main Class
      // -----------------------------
     //  Fake API Simulation
     // -----------------------------
-    Public OffenderResponse fakeSearch() {
+    public OffenderResponse fakeSearch() {
 
         // Generate 1-5 random offenders
-        int count = random.nextInt(5) +1;
+        int count = Random random = new Random();
 
         Offender[] fakeList = new Offender[count];
 
@@ -127,13 +127,13 @@ public class Web  { // Main Class
         int choice = scanner.nextInt();
         scanner.nextLine(); // Clear newline
 
-        offenderRespone result = null;
+        OffenderResponse result = null;
         
 
         try {
 
             if (choice == 1) {
-                system.out.print("Enter first name: ");
+                System.out.print("Enter first name: ");
                 String firstName = scanner.nextLine();
 
                 system.out.print("Enter Zipcode: ");
@@ -146,7 +146,7 @@ public class Web  { // Main Class
 
             } else {
                 System.out.println("Using Random Fake API");
-                result = app.fakesearch();
+                result = app.fakeSearch();
             }
             
             // Print results
