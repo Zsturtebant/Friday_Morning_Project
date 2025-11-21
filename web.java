@@ -14,7 +14,7 @@ public class web{
      * @throws IOException if the request fails
      */
     public String get(String urlString) throws IOException {
-        URL url = new URL(https://www.nsopw.gov/search-public-sex-offender-registries);
+        URL url = new URL("https://www.nsopw.gov/search-public-sex-offender-registries");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         // Configure the request
