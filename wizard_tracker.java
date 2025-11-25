@@ -1,101 +1,114 @@
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+/**
+ * WizardTracker Class
+ * -------------------
+ * Tracks dark wizard activity using data from the Web API layer.
+ * 
+ * Responsibilities:
+ * • Fetch nearby wizard data (real or fake) using Web.java
+ * • Convert API offenders into magical TrackedWizard objects
+ * • Store and manage a list of active dark wizard sightings
+ * • Assign danger levels to each wizard
+ * • Provide a display() method to show all tracked wizards
+ * 
+ * This class acts as the main “magical logic” engine for the
+ * Wizard Watch application.
+ */
 
-import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Web {
+public class WizardTracker {
 
-    // -----------------------------
-    // Embedded JSON data structures
-    // -----------------------------
-    static class OffenderResponse {
+    private Web web;  // Uses your Web class to fetch data
 
-        boolean status;
-        int count;
+    // List of tracked dark wizards (in-app memory)
+    private List<TrackedWizard> trackedWizards = new ArrayList<>();
 
-        @SerializedName("results")
-        Offender[] offenders;
+    // Constructor
+    public WizardTracker() {
+        this.web = new Web();
     }
 
-    static class Offender {
-
-        @SerializedName("full_name")
+    // -----------------------------
+    // Inner class: TrackedWizard
+    // -----------------------------
+    public static class TrackedWizard {
         String name;
+        String dangerLevel;   // e.g. "High", "Severe", "Extreme"
+        String profileUrl;
 
-        @SerializedName("fname")
-        String firstName;
-
-        @SerializedName("lname")
-        String lastName;
-
-        @SerializedName("url")
-        String profileUrl;  // public safe link
+        public TrackedWizard(String name, String dangerLevel, String profileUrl) {
+            this.name = name;
+            this.dangerLevel = dangerLevel;
+            this.profileUrl = profileUrl;
+        }
     }
 
     // -----------------------------
-    // Fields
+    // Convert Offender -> TrackedWizard
     // -----------------------------
-    private final HttpClient client = HttpClient.newHttpClient();
-    private final Gson gson = new Gson();
+    private TrackedWizard convert(Web.Offender o) {
 
-    // -----------------------------
-    // API Search Method
-    // -----------------------------
-    public OffenderResponse search(String firstName, String zipcode, String apiKey)
-            throws IOException, InterruptedException {
+        String[] dangers = {"High", "Severe", "Extreme"};
+        String danger = dangers[(o.name.length() + o.profileUrl.length()) % dangers.length];
 
-        String url = String.format(
-                "https://api.offenders.io/sexoffender?firstName=%s&zipcode=%s&key=%s",
-                firstName, zipcode, apiKey
-        );
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .header("Accept", "application/json")
-                .GET()
-                .build();
-
-        HttpResponse<String> response =
-                client.send(request, HttpResponse.BodyHandlers.ofString());
-
-        // Print JSON for debugging
-        // System.out.println(response.body());
-
-        return gson.fromJson(response.body(), OffenderResponse.class);
+        return new TrackedWizard(o.name, danger, o.profileUrl);
     }
 
     // -----------------------------
-    // Main Method
+    // Search for Nearby Dark Wizards
     // -----------------------------
-    public static void main(String[] args) {
-        Web client = new Web();
-
+    public List<TrackedWizard> searchNearby(String name, String zipcode, String key) {
         try {
-            OffenderResponse result = client.search(
-                    "First",
-                    "12345",
-                    "YOUR_API_KEY_HERE"
-            );
+            Web.OffenderResponse response = web.search(name, zipcode, key);
 
-            if (result != null && result.offenders != null) {
-                System.out.println("Offenders found: " + result.offenders.length);
-
-                for (Offender o : result.offenders) {
-                    System.out.println("Name: " + o.name);
-                    System.out.println("Public Profile: " + o.profileUrl);
-                    System.out.println("----------------------");
-                }
-
-            } else {
-                System.out.println("No results or invalid API response.");
+            if (response == null || response.offenders == null) {
+                return trackedWizards;
             }
 
+            trackedWizards.clear(); // Refresh
+
+            for (Web.Offender o : response.offenders) {
+                trackedWizards.add(convert(o));
+            }
+
+            return trackedWizards;
+
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Spell failure: Could not contact the Ministry.");
+            return trackedWizards;
+        }
+    }
+
+    // -----------------------------
+    // Fake / Random Magical Results
+    // -----------------------------
+    public List<TrackedWizard> fakeSearch() {
+
+        Web.OffenderResponse response = web.fakeSearch();
+        trackedWizards.clear();
+
+        for (Web.Offender o : response.offenders) {
+            trackedWizards.add(convert(o));
+        }
+
+        return trackedWizards;
+    }
+
+    // -----------------------------
+    // Display Results
+    // -----------------------------
+    public void display() {
+        if (trackedWizards.isEmpty()) {
+            System.out.println("No dark wizard activity detected.");
+            return;
+        }
+
+        for (TrackedWizard w : trackedWizards) {
+            System.out.println("⚠️ Dark Wizard: " + w.name);
+            System.out.println("Danger Level: " + w.dangerLevel);
+            System.out.println("Ministry File: " + w.profileUrl);
+            System.out.println("-----------------------------------");
         }
     }
 }
