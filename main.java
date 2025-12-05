@@ -2,31 +2,48 @@
  public static void main(String[] args) {
         // Program logic goes here
   Scanner input = new Scanner(System.in);
+        WizardTracker tracker = new WizardTracker();
 
-  System.out.println("===== Wizard Watch Input Center =====");
+        System.out.println("===== Wizard Watch Input Center =====");
 
-  // asking the user for their location
-  System.out.println("Enter your current location (latitude,longitude): ");
-  String userLocationInput = input.nectLine();
+        // 
+        // Get user location input
+        // 
+        System.out.print("Enter your current location (latitude,longitude): ");
+        String userLocationInput = input.nextLine();
 
- System.out.println("You entered: " + userLocationInput);
-  System.out.print("Is this correct? (yes/no): ");
-  String comfirm = input.nextLine();
+        System.out.println("You entered: " + userLocationInput);
+        System.out.print("Is this correct? (yes/no): ");
+        String confirm = input.nextLine();
 
-  if (!confirm.equalsIgnoreCase("yes")) {
-            System.out.println("Please restart the program and enter correct location.");
+        if (!confirm.equalsIgnoreCase("yes")) {
+            System.out.println("Please restart and enter correct location.");
             return;
         }
 
-  // ask user how far to search
- System.out.print("Enter the maximum distance (in miles) to search for offenders: ");
+        // 
+        //  Ask for max search distance
+        // 
+        System.out.print("Enter the maximum distance (in miles): ");
         double maxDistance = input.nextDouble();
 
-  System.out.println("\nSearching within " + maxDistance + " miles...");
+        System.out.println("\nSearching within " + maxDistance + " miles...");
 
-  // calls that will be implemented by  teammates ---
-  // Oneal will handle  storing user location
+        // 
+        // 3. Call teammate code
+        // 
+        
+        tracker.fakeSearch();
 
+        // 
+        // 4. Display results
+        // 
+        System.out.println("\n===== Dark Wizard Activity =====");
+        tracker.display();
+
+        System.out.println("===== End of Report =====");
+    }
+}
   
   
     }
